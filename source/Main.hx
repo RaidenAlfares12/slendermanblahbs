@@ -29,22 +29,6 @@ class Main extends Sprite
 		Lib.current.addChild(new Main());
 	}
 
-	public function new()
-	{
-		super();
-
-		SUtil.uncaughtErrorHandler();
-
-		if (stage != null)
-		{
-			init();
-		}
-		else
-		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-	}
-
 	private function init(?E:Event):Void
 	{
 		if (hasEventListener(Event.ADDED_TO_STAGE))
@@ -69,7 +53,6 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-    SUtil.check();
 	
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
@@ -85,9 +68,10 @@ class Main extends Sprite
 		}
 		//#end
 
-		#if html5
+		#if android
 		FlxG.autoPause = false;
-		FlxG.mouse.visible = false;
+		  // yea
+                FlxG.mouse.visible = true; 
 		#end
 	}
 
