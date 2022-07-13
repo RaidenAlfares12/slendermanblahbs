@@ -28,6 +28,20 @@ class Main extends Sprite
 	{
 		Lib.current.addChild(new Main());
 	}
+ 
+        public function new()
+	{
+		super();
+
+		if (stage != null)
+		{
+			init();
+		}
+		else
+		{
+			addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+	}
 
 	private function init(?E:Event):Void
 	{
